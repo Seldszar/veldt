@@ -1,0 +1,66 @@
+{
+  "name": "veldt",
+  "version": "0.0.0-development",
+  "description": "Wrapper for LevelDB enabling sub-database management",
+  "author": "Alexandre Breteau <contact@seldszar.fr>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "homepage": "https://github.com/seldszar/veldt#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seldszar/veldt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/seldszar/veldt/issues"
+  },
+  "files": [
+    "lib",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "level",
+    "wrapper"
+  ],
+  "engine": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "documentation": "documentation build lib/index.js --format=md --output=API.md",
+    "lint": "eslint --format codeframe .",
+    "lint-staged": "lint-staged",
+    "semantic-release": "semantic-release",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.1.2",
+    "@commitlint/config-conventional": "^7.1.2",
+    "babel-eslint": "^10.0.1",
+    "documentation": "^9.1.1",
+    "eslint": "^5.11.1",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.3.1",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.3",
+    "semantic-release": "^15.13.2"
+  },
+  "peerDependencies": {
+    "level": ">=4.0.0"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "npm run lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --format codeframe"
+  }
+}
